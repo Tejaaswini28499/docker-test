@@ -7,5 +7,8 @@ WORKDIR /app
 # Copy local files into container
 COPY app.py .
 
+# Install Redis client
+RUN pip install redis
+
 # Run the Python script when container starts
 CMD ["python", "app.py"]
