@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  hello-app:
+    build: .
+    container_name: hello-app
+    depends_on:
+      - redis
+    networks:
+      - hello-net
+
+  redis:
+    image: redis:6.2
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - hello-net
+
+networks:
+  hello-net:
+    driver: bridge
